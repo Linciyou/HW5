@@ -54,7 +54,7 @@ if st.button("開始檢測 🔍", type="primary"):
         with st.spinner('正在分析文本特徵...'):
             # 由於模型限制，長文本可能需要截斷，這裡簡單取前 512 個 tokens
             # 實際應用中建議切分段落檢測
-            result = classifier(user_input[:512])[0]
+            result = classifier(user_input, truncation=True, max_length=512)[0]
             
             # 解析結果
             label = result['label'] # 通常是 'ChatGPT' 或 'Human'
